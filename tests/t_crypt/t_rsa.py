@@ -26,18 +26,19 @@ class RSATest(TestCryptoAlgo):
     def get_decryption_key(self):
         return RSA.get_pem(self.private_key, is_private=True)
 
+    @staticmethod
+    def showcase():
+        rsa_crypto = RSA()
+        private_key, public_key = RSA.get_key_pair()
+
+        private_pem = RSA.get_pem(private_key, is_private=True)
+        public_pem = RSA.get_pem(public_key, is_private=False)
+
+        encrypted_message = rsa_crypto.encrypt(key=public_pem, content='Hello, RSA!')
+        print('Encrypted:', encrypted_message)
+
+        decrypted_message = rsa_crypto.decrypt(content=encrypted_message, key=private_pem)
+        print('Decrypted:', decrypted_message)
 
 if __name__ == "__main__":
-    rsa_crypto = RSA()
-    private_key, public_key = RSA.get_key_pair()
-
-    private_pem = RSA.get_pem(private_key, is_private=True)
-    public_pem = RSA.get_pem(public_key, is_private=False)
-
-    encrypted_message = rsa_crypto.encrypt(key=public_pem,content='Hello, RSA!')
-    print('Encrypted:', encrypted_message)
-
-    decrypted_message = rsa_crypto.decrypt(content=encrypted_message, key=private_pem)
-    print('Decrypted:', decrypted_message)
-
     RSATest.execute_all()
