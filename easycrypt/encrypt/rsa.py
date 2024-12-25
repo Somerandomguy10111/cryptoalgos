@@ -4,7 +4,6 @@ from cryptography.hazmat.primitives import hashes
 import base64
 from .algo import CryptoAlgo
 
-
 class RSA(CryptoAlgo):
 
     def encrypt(self, content: str, key: bytes) -> str:
