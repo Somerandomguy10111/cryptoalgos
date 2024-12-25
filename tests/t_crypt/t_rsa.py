@@ -1,12 +1,11 @@
-from holytools.devtools import Unittest
 from easycrypt.encrypt import RSA
 from easycrypt.encrypt.algo import CryptoAlgo
-from tests.t_crypt.cryptotest import TestCryptoAlgo
+from tests.t_crypt import cryptotest
 
 
 # -------------------------------------------
 
-class RSATest(TestCryptoAlgo):
+class RSATest(cryptotest.TestCryptoAlgo):
 
     def get_algorithm(self) -> CryptoAlgo:
         return RSA()

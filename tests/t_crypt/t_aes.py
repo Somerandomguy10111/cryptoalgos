@@ -1,10 +1,10 @@
 from easycrypt import AES
 
 from easycrypt.encrypt.algo import CryptoAlgo
-from tests.t_crypt.cryptotest import TestCryptoAlgo
+from tests.t_crypt import cryptotest
 
 
-class TestAESCryptography(TestCryptoAlgo):
+class TestAESCryptography(cryptotest.TestCryptoAlgo):
 
     def get_algorithm(self) -> CryptoAlgo:
         return AES()
