@@ -7,14 +7,14 @@ from .algo import CryptoAlgo
 
 class RSA(CryptoAlgo):
 
-    def encrypt(self, content: str, public_key: bytes) -> str:
-        public_key_obj = self._load_public_key(public_key)
+    def encrypt(self, content: str, key: bytes) -> str:
+        public_key_obj = self._load_public_key(key)
         oaep_padding = self._get_padding()
         encrypted = public_key_obj.encrypt(content.encode(), oaep_padding)
         return base64.b64encode(encrypted).decode('utf-8')
 
-    def decrypt(self, private_key: bytes, content: str) -> str:
-        private_key_obj = self._load_private_key(private_key)
+    def decrypt(self, content: str, key: bytes) -> str:
+        private_key_obj = self._load_private_key(key)
         oaep_padding = self._get_padding()
         decrypted = private_key_obj.decrypt(base64.b64decode(content), oaep_padding)
         return decrypted.decode('utf-8')
