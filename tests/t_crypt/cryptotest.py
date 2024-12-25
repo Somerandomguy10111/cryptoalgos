@@ -3,6 +3,8 @@ import unittest
 from abc import abstractmethod
 
 from holytools.devtools import Unittest
+
+from easycrypt import RSA
 from easycrypt.encrypt.algo import CryptoAlgo
 
 
@@ -32,6 +34,9 @@ class TestCryptoAlgo(Unittest):
         self.assertEqual(decrypted, self.test_content_special)
 
     def test_longstring_roundtrip(self):
+        if isinstance(self.algorithm, RSA):
+            self.skipTest("RSA is not suitable for long strings")
+
         long_content = "A" * 10000
         encrypted = self.algorithm.encrypt(content=long_content, key=self.encryption_key)
         decrypted = self.algorithm.decrypt(key=self.decryption_key, content=encrypted)
