@@ -1,12 +1,10 @@
 [project]
-name = "myproject"
+name = "easycrypt"
 version = "0.1.0"
 authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
 description = "A very good project indeed"
 readme = "readme.md"
-dependencies = ["holytools"]
-#dependencies = ["holytools @ git+https://github.com/Somerandomguy10111/holytools"]
-#dependencies = ["holytools @ git+ssh://git@github.com/Somerandomguy10111/holytools", pkg2, pkg3]
+dependencies = ["cryptography"]
 
 [tool.setuptools.packages.find]
-include = ["myproject"]   # Only discover in myproject folder
+include = ["easycrypt"]   # Only discover in myproject folder

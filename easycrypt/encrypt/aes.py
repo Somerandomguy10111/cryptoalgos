@@ -24,7 +24,7 @@ class AES(CryptoAlgo):
         return b64encode(iv + encrypted_content).decode()
 
 
-    def decrypt(self, key : Union[str, bytes], content: str) -> Optional[str]:
+    def decrypt(self, content: str, key : Union[str, bytes]) -> Optional[str]:
         encrypted_data = b64decode(content)
         iv, data  = encrypted_data[:16], encrypted_data[16:]
 
