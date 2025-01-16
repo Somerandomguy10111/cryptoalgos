@@ -1,0 +1,13 @@
+name: Standard python workflows
+
+on: [push]
+
+jobs:
+  ToxTests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Somerandomguy10111/actions/toxtests@main
+  Dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Somerandomguy10111/actions/deptry@main
