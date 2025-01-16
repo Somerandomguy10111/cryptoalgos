@@ -7,5 +7,4 @@ readme = "readme.md"
 dependencies = ['cryptography', 'holytools']
 
 [tool.setuptools.packages.find]
-where = ["tests"]  # incorrect
-#include = ["easycrypt*"] # correct
+include = ["easycrypt*"] # correct
