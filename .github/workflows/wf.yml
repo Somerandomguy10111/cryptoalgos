@@ -1,13 +1,7 @@
-name: Standard python workflows
+name: Workflows
 
 on: [push]
 
 jobs:
-  ToxTests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Somerandomguy10111/actions/toxtests@main
-  Dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Somerandomguy10111/actions/deptry@main
+  StdPyTests:
+    uses: Somerandomguy10111/actions/.github/workflows/stdpy.yml@main
