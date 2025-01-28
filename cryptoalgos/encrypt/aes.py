@@ -1,6 +1,6 @@
 import os
 from base64 import b64encode, b64decode
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes, CipherContext
 from cryptography.hazmat.backends import default_backend
 from typing import Optional, Union
 
@@ -23,6 +23,7 @@ class AES(CryptoAlgo):
 
         encryptor = self._get_encryptor(byte_key=self.get_byte_key(key=key), iv=iv)
         encrypted_content = encryptor.update(byte_content) + encryptor.finalize()
+
         return b64encode(iv + encrypted_content).decode()
 
 
@@ -49,10 +50,10 @@ class AES(CryptoAlgo):
             raise IOError(f'Key must be 32 bytes long, but got {len(byte_key)} bytes.')
         return byte_key
 
-    def _get_encryptor(self, byte_key : bytes, iv : bytes):
+    def _get_encryptor(self, byte_key : bytes, iv : bytes) -> CipherContext:
         return self._get_cipher(key=byte_key, iv=iv).encryptor()
 
-    def _get_decryptor(self, byte_key : bytes, iv : bytes):
+    def _get_decryptor(self, byte_key : bytes, iv : bytes) -> CipherContext:
         return self._get_cipher(key=byte_key, iv=iv).decryptor()
 
     def _get_cipher(self, key : bytes, iv : bytes):
