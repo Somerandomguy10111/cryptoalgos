@@ -1,5 +1,5 @@
-from easycrypt import AES
-from easycrypt.encrypt.algo import CryptoAlgo
+from cryptoalgos import AES
+from cryptoalgos.encrypt.algo import CryptoAlgo
 from tests.t_crypt import cryptotest
 
 

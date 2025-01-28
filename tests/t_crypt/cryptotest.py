@@ -4,8 +4,8 @@ from abc import abstractmethod
 
 from holytools.devtools import Unittest
 
-from easycrypt import RSA
-from easycrypt.encrypt.algo import CryptoAlgo
+from cryptoalgos import RSA
+from cryptoalgos.encrypt.algo import CryptoAlgo
 
 
 class TestCryptoAlgo(Unittest):

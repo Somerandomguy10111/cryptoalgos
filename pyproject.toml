@@ -1,5 +1,5 @@
 [project]
-name = "easycrypt"
+name = "cryptoalgos"
 version = "0.1.0"
 authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
 description = "A very good project indeed"
@@ -7,4 +7,4 @@ readme = "readme.md"
 dependencies = ['cryptography']
 
 [tool.setuptools.packages.find]
-include = ["easycrypt*"] # correct
+include = ["cryptoalgos*"] # correct

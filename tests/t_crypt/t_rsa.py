@@ -1,5 +1,5 @@
-from easycrypt.encrypt import RSA
-from easycrypt.encrypt.algo import CryptoAlgo
+from cryptoalgos.encrypt import RSA
+from cryptoalgos.encrypt.algo import CryptoAlgo
 from tests.t_crypt import cryptotest
 
 
