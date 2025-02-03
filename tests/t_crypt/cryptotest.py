@@ -48,9 +48,7 @@ class TestCryptoAlgo(Unittest):
     def test_different_keys_roundtrip(self):
         encrypted = self.algorithm.encrypt(content=self.test_content, key=self.encryption_key)
         with self.assertRaises(Exception):
-            decrypted = self.algorithm.decrypt(key="wrong_key", content=encrypted)
-            if decrypted != self.test_content:
-                raise Exception(f'Encrypted and decrypted content do not match')
+            self.algorithm.decrypt(key="wrong_key", content=encrypted)
 
     def test_decryption_altered_data(self):
         encrypted = self.algorithm.encrypt(content=self.test_content, key=self.encryption_key)

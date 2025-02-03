@@ -8,5 +8,5 @@ class CryptoAlgo:
         pass
 
     @abstractmethod
-    def decrypt(self, content: str, key: Union[str, bytes]) -> Optional[str]:
+    def decrypt(self, content: str, key: Union[str, bytes]) -> str:
         pass

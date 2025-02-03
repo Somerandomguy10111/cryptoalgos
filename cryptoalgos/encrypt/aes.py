@@ -1,8 +1,9 @@
 import os
 from base64 import b64encode, b64decode
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes, CipherContext
+from typing import Union
+
 from cryptography.hazmat.backends import default_backend
-from typing import Optional, Union
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes, CipherContext
 
 from cryptoalgos.hash import SHA
 from .algo import CryptoAlgo
@@ -26,8 +27,7 @@ class AES(CryptoAlgo):
 
         return b64encode(iv + encrypted_content).decode()
 
-
-    def decrypt(self, content: str, key : Union[str, bytes]) -> Optional[str]:
+    def decrypt(self, content: str, key : Union[str, bytes]) -> str:
         encrypted_data = b64decode(content)
         iv, data  = encrypted_data[:16], encrypted_data[16:]
 
@@ -36,8 +36,7 @@ class AES(CryptoAlgo):
         try:
             decoded = decrypted_content.decode()
         except UnicodeDecodeError:
-            print(f'Error decoding bytes to UTF-8. Most likely the decryption key is not correct')
-            decoded = None
+            raise ValueError(f'Error decoding bytes to UTF-8. Most likely the decryption key is not correct')
 
         return decoded
 
